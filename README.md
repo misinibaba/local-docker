@@ -13,7 +13,14 @@
 1.clone 仓库到本地
 
 
-2.进入files目录，执行docker-compose up 命令，如需要守护进程运行，则是docker-compose up -d
+2.进入files目录，执行
+```
+docker-compose up
+```
+命令，如需要守护进程运行，则需要加上-d参数
+```
+docker-compose up -d
+```
 
 
 ### PHP版本切换
@@ -21,12 +28,15 @@
 
 ```
 
-$ docker-compose -f docker-compose54.yml up
-$ docker-compose -f docker-compose56.yml up
+$ docker-compose -f docker-compose54.yml up --build
+$ docker-compose -f docker-compose56.yml up --build
 
 ```
+第一次切换构建后，则可以回到正常使用
+```
+docker-compose up
+```
 
-如果是第一次使用新版本则还需要加上 --build参数
 
 ### 注意事项：
 
