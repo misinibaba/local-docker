@@ -1,6 +1,8 @@
 /.idea
 
 # 数据库文件
-/data/*
-/app/*
-/logs/*
+data/
+app/
+logs/
+files/nginx/conf.d/*
+!files/nginx/conf.d/default.conf

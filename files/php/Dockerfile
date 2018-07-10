@@ -21,11 +21,11 @@ RUN apt-get update && apt-get install -y \
         && rm -r /var/lib/apt/lists/*
 
 #  将预先下载好的拓展包从宿主机拷贝进去
-#COPY ./redis.tgz /home/redis.tgz
+COPY ./redis.tgz /home/redis.tgz
 
 #  安装 PECL 拓展，这里我们安装的是Redis
-RUN  wget -P /home/ http://pecl.php.net/get/redis-4.0.2.tgz 
-RUN  pecl install /home/redis-4.0.2.tgz && echo "extension=redis.so" > /usr/local/etc/php/conf.d/redis.ini 
+#RUN  wget -P /home/ http://pecl.php.net/get/redis-4.0.2.tgz 
+RUN  pecl install /home/redis.tgz && echo "extension=redis.so" > /usr/local/etc/php/conf.d/redis.ini 
 		
 #  安装 Composer
 ENV COMPOSER_HOME /root/composer
