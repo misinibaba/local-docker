@@ -1,7 +1,7 @@
 version: '3'
 services:
   php-fpm:
-    build: ./php71/
+    build: ./php56/
     ports:
       - "9000:9000"
     links:
@@ -9,8 +9,8 @@ services:
       - redis-db:redis-db
     volumes:
       - ../app:/data/www:rw
-      - ./php71/php-dev.ini:/usr/local/etc/php/php.ini:ro
-      - ./php71/php-fpm.conf:/usr/local/etc/php-fpm.conf:ro
+      - ./php56/php-dev.ini:/usr/local/etc/php/php.ini:ro
+      - ./php56/php-fpm.conf:/usr/local/etc/php-fpm.conf:ro
       - ../logs/php-fpm:/var/log/php-fpm:rw
     restart: always
     command: php-fpm
