@@ -16,6 +16,18 @@
 2.进入files目录，执行docker-compose up 命令，如需要守护进程运行，则是docker-compose up -d
 
 
+### PHP版本切换
+默认为7.1版本，还支持5.6和5.4，需要切换则到files目录下执行
+
+```
+
+$ docker-compose -f docker-compose54.yml up
+$ docker-compose -f docker-compose56.yml up
+
+```
+
+如果是第一次使用新版本则还需要加上 --build参数
+
 ### 注意事项：
 
 1.连接数据库或redis的地方，将数据库IP或域名改为mysql-db 或 redis-db
