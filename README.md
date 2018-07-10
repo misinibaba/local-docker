@@ -27,10 +27,8 @@ docker-compose up -d
 默认为7.1版本，还支持5.6和5.4，需要切换则到files目录下执行
 
 ```
-
 $ docker-compose -f docker-compose54.yml up --build
 $ docker-compose -f docker-compose56.yml up --build
-
 ```
 第一次切换构建后，则可以回到正常使用
 ```
