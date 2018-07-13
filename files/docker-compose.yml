@@ -1,9 +1,9 @@
 version: '3'
 services:
-  php-fpm:
+  php-fpm-71:
     build: ./php71/
     ports:
-      - "9000:9000"
+      - "10071:10071"
     links:
       - mysql-db:mysql-db
       - redis-db:redis-db
@@ -11,16 +11,34 @@ services:
       - ../app:/data/www:rw
       - ./php71/php-dev.ini:/usr/local/etc/php/php.ini:ro
       - ./php71/php-fpm.conf:/usr/local/etc/php-fpm.conf:ro
-      - ../logs/php-fpm:/var/log/php-fpm:rw
+      - ../logs/php-fpm:/var/log/php-fpm-71:rw
     restart: always
     command: php-fpm
+    
+  php-fpm-56:
+    build: ./php56/
+    ports:
+      - "10056:10056"
+    links:
+      - mysql-db:mysql-db
+      - redis-db:redis-db
+    volumes:
+      - ../app:/data/www:rw
+      - ./php56/php-dev.ini:/usr/local/etc/php/php.ini:ro
+      - ./php56/php-fpm.conf:/usr/local/etc/php-fpm.conf:ro
+      - ../logs/php-fpm:/var/log/php-fpm-56:rw
+    restart: always
+    command: php-fpm
+
 
   nginx:
     build: ./nginx
     depends_on:
-      - php-fpm
+      - php-fpm-71
+      - php-fpm-56
     links:
-      - php-fpm:php-fpm
+      - php-fpm-71:php-fpm-71
+      - php-fpm-56:php-fpm-56
     volumes:
       - ../app:/data/www:rw
       - ./nginx/conf.d:/etc/nginx/conf.d:ro
