@@ -23,18 +23,15 @@ docker-compose up -d
 ```
 
 
-### PHP版本切换
-默认为7.1版本，还支持5.6和5.4，需要切换则到files目录下执行
+### PHP版本选择
+nginx中项目配置中，根据需求将请求发送到不同php-fpm中
+```
+#php5.6写
+fastcgi_pass   php-fpm-56:10056;
 
+#php7.1写
+fastcgi_pass   php-fpm-71:10071;
 ```
-$ docker-compose -f docker-compose54.yml up --build
-$ docker-compose -f docker-compose56.yml up --build
-```
-第一次切换构建后，则可以回到正常使用
-```
-docker-compose up
-```
-
 
 ### 注意事项：
 
