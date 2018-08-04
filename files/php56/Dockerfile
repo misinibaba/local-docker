@@ -21,6 +21,11 @@ RUN apt-get update && apt-get install -y \
 		&& docker-php-ext-install sockets \
         && rm -r /var/lib/apt/lists/*
 
+RUN apt-get update 
+
+#安装graphviz
+RUN apt-get install graphviz
+		
 #  将预先下载好的拓展包从宿主机拷贝进去
 COPY ./redis.tgz /home/redis.tgz
 
@@ -33,7 +38,7 @@ ENV COMPOSER_HOME /root/composer
 RUN curl -sS https://getcomposer.org/installer | php -- --install-dir=/usr/local/bin --filename=composer
 ENV PATH $COMPOSER_HOME/vendor/bin:$PATH
 
-RUN rm -f /home/redis.tgz \
+RUN rm -f /home/redis-4.0.2.tgz \
         rm -f /home/cphalcon.tar.gz 
 
 WORKDIR /data

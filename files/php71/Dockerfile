@@ -21,6 +21,11 @@ RUN apt-get update && apt-get install -y \
         && docker-php-ext-install sockets \
         && rm -r /var/lib/apt/lists/*
 
+RUN apt-get update 
+
+#安装graphviz
+RUN apt-get install graphviz
+		
 #  将预先下载好的拓展包从宿主机拷贝进去
 COPY ./redis.tgz /home/redis.tgz
 
