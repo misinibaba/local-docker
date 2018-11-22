@@ -24,7 +24,7 @@ RUN apt-get update && apt-get install -y \
 RUN apt-get update 
 
 #安装graphviz
-RUN apt-get install graphviz
+RUN apt-get install -y graphviz
 		
 #  将预先下载好的拓展包从宿主机拷贝进去
 COPY ./redis.tgz /home/redis.tgz

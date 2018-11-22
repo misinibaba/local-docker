@@ -5,6 +5,6 @@ ENV TZ=Asia/Shanghai
 RUN ln -snf /usr/share/zoneinfo/$TZ /etc/localtime && echo $TZ > /etc/timezone
 
 RUN apt-get update 
-RUN apt-get install sphinxsearch
-RUN apt-get install cron
-RUN apt-get install vim
+RUN apt-get install -y sphinxsearch 
+RUN apt-get install -y cron  
+RUN apt-get install -y vim
